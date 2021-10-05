@@ -1,10 +1,10 @@
-// Challenge from CodeWars
+// Duplicate Encoder Challenge from CodeWars
+// https://www.codewars.com/kata/54b42f9314d9229fd6000d9c/train/swift
 
 import UIKit
 
 func duplicateEncode(_ word: String) -> String {
     var result = ""
-    
     var duplicateLetters: [String] {
         let wordAsSet = Set(word.lowercased())
         var duplicates = word.lowercased().map( {String($0)} )
@@ -21,7 +21,7 @@ func duplicateEncode(_ word: String) -> String {
         } else {
             result.append("(")
         }
-        
+
     }
     return result
 }
