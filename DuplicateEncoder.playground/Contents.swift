@@ -4,27 +4,28 @@ import UIKit
 
 func duplicateEncode(_ word: String) -> String {
     var result = ""
-    let wordAsSet = Set(word)
-    var duplicateLetters: String {
-        var duplicates = Array(word)
+    
+    var duplicateLetters: [String] {
+        let wordAsSet = Set(word.lowercased())
+        var duplicates = word.lowercased().map( {String($0)} )
         
-        for (index, letter) in word.enumerated() {
-            if wordAsSet.contains(letter) {
-                duplicates.remove(at: index)
-            }
+        for letter in wordAsSet {
+            duplicates.remove(at: duplicates.firstIndex(of: String(letter))!)
         }
-        return String(duplicates)
+        return duplicates
     }
     
-    for letter in word {
-        if duplicateLetters.contains(letter) {
-            result.append("(")
-        } else {
+    for letter in word.lowercased() {
+        if duplicateLetters.contains(String(letter)) {
             result.append(")")
+        } else {
+            result.append("(")
         }
-
+        
     }
     return result
 }
 
-duplicateEncode("recede")
+duplicateEncode("Success")
+
+
