@@ -5,6 +5,18 @@
 import UIKit
 
 func disemvowel(_ s: String) -> String {
-
-    return "This is the return strong"
+    let vowels = ["a", "e", "i", "o", "u"]
+    var returnString = ""
+    
+    for letter in s {
+        if vowels.contains(String(letter.lowercased())) == false {
+            returnString.append(letter)
+        }
+    }
+    
+    return returnString
 }
+
+let testString = "This website is for losers LOL!"
+
+print(disemvowel(testString))
