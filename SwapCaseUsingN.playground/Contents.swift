@@ -7,27 +7,26 @@ func swap(_ s: String, _ n: Int) -> String {
     let binaryInt = String(n, radix: 2)
     var returnString = ""
     var count = 0
-
-    
-    //let repeats = (s.count / binaryInt.count) + 1
     let repeats = 10
     let repeatedBinaryStr = String(String(repeating: binaryInt, count: repeats))
-    print(repeatedBinaryStr)
     
-        for (index, char) in s.enumerated() {
-            if char == " " {
-                count += 1
-                returnString.append(" ")
-            } else if char.isLetter == false {
-                returnString.append(char)
-            } else if repeatedBinaryStr[repeatedBinaryStr.index(s.startIndex, offsetBy: index - count)] == "1" {
-                char.isLowercase == true ? returnString.append(char.uppercased()) : returnString.append(char.lowercased())
-            } else if repeatedBinaryStr[repeatedBinaryStr.index(s.startIndex, offsetBy: index - count)] == "0" {
-                returnString.append(char)
-            }
+    if s.isEmpty { return "" }
+    if n == 0 { return s }
+    
+    for (index, char) in s.enumerated() {
+        if char == " " {
+            count += 1
+            returnString.append(" ")
+        } else if char.isLetter == false {
+            count += 1
+            returnString.append(char)
+        } else if repeatedBinaryStr[repeatedBinaryStr.index(s.startIndex, offsetBy: index - count)] == "1" {
+            char.isLowercase == true ? returnString.append(char.uppercased()) : returnString.append(char.lowercased())
+        } else if repeatedBinaryStr[repeatedBinaryStr.index(s.startIndex, offsetBy: index - count)] == "0" {
+            returnString.append(char)
         }
+    }
     
-    print(returnString)
     return returnString
 }
 
